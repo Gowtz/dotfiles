@@ -1,3 +1,21 @@
 *
+!nvim/
+!nvim/**
+!fish/
+!fish/**
+!allacritty/
+!allacritty/**
+!bspwm/
+!bspwm/**
+!rofi/
+!rofi/**
+!sxhkd/
+!sxhkd/**
+!tmux/
+!tmux/**
 
-!nvim/*
+# Ignore specific files/folders
+fish/fish_variables
+tmux/plugins/catppuccin/
+tmux/plugins/catppuccin/**
+!.gitignore
