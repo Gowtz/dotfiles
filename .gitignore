@@ -14,8 +14,13 @@
 !tmux/
 !tmux/**
 
+!polybar/
+!polybar/**
+!picom/
+!picom/**
+
 # Ignore specific files/folders
 fish/fish_variables
-tmux/plugins/catppuccin/
-tmux/plugins/catppuccin/**
+tmux/plugins/
+tmux/plugins/**
 !.gitignore

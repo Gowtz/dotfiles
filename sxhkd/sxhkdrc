@@ -153,8 +153,9 @@ alt + {_,shift + }Tab
 
 # Control the Brightness
 XF86MonBrightness{Up,Down}
-    brightnessctl s 5%{+,-}
+    brightnessctl set 5%{+,-}
 
+# Screenshot
 Print
     scrot -s $HOME/Pictures/Screenshots/'Screenshots_%m-%d-%Y_%H-%M-%S.png' -e 'xclip -selection clipboard -target image/png -i $f'
 
@@ -168,6 +169,17 @@ super + Print
 # super + h
 #     polybar-msg cmd hide`
 #
+
+# Volume
+XF86AudioMute
+	amixer -D pulse sset Master toggle
+
+XF86Audio{Raise,Lower}Volume
+	amixer -D pulse sset Master 5%{+,-}
+
+XF86Audio{Play,Prev,Next}
+	playerctl --player=vlc,spotify {play-pause,previous,next}
+
 
 ctrl + alt + shift + {Down,Up}
     bspc node -d {next,prev} -f
