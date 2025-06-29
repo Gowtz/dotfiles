@@ -1,6 +1,4 @@
---Type craft
 return {
-
   {
     "williamboman/mason.nvim",
     config = function()
@@ -23,15 +21,6 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
       })
-      lspconfig.svelte.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.prismals.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.pyright.setup({
-        capabilities = capabilities,
-      })
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
       })
@@ -44,13 +33,6 @@ return {
       lspconfig.emmet_ls.setup({
         capabilities = capabilities,
       })
-
-      lspconfig.pylsp.setup({
-        capabilities = capabilities,
-      })
-      -- lspconfig.gopls.setup({
-      --   capabilities = capabilities,
-      -- })
       lspconfig.jdtls.setup({
         capabilities = capabilities,
       })
