@@ -18,8 +18,12 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
+bspc rule -a '*:*:Picture-in-Picture' state=floating sticky=on
 
-
+export GTK_THEME=WhiteSur-Dark
+export XCURSOR_THEME=Adwaita
+export XCURSOR_SIZE=24
+export GTK_MODULES=gail:atk-bridge
 
 #Autostart
 polybar &

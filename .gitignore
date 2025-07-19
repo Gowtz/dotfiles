@@ -21,6 +21,7 @@
 
 # Ignore specific files/folders
 fish/fish_variables
+fish/fishd.tmp.*
 tmux/plugins/
 tmux/plugins/**
 !.gitignore
