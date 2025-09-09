@@ -33,9 +33,13 @@ return {
       lspconfig.emmet_ls.setup({
         capabilities = capabilities,
       })
-      lspconfig.jdtls.setup({
+      -- lspconfig.jdtls.setup({
+      --   capabilities = capabilities,
+      -- })
+      lspconfig.pyright.setup({
         capabilities = capabilities,
       })
+
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
@@ -51,5 +55,39 @@ return {
 
       vim.keymap.set("n", "E", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
     end,
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        python = { "black", "isort" },
+      },
+    },
+  },
+
+  -- Auto venv selector
+  {
+    "linux-cultist/venv-selector.nvim",
+    opts = {
+      fd_binary_name = "fdfind",                -- fix for Ubuntu
+      name = { ".venv", "venv", ".env", "env" }, -- include .env
+      auto_refresh = true,
+      search_workspace = true,
+    },
+    -- init = function()
+    --   -- auto-activate cached venv or .env on VimEnter
+    --   vim.api.nvim_create_autocmd("VimEnter", {
+    --     callback = function()
+    --       require("venv-selector").retrieve_from_cache()
+    --       local venv = vim.fn.getcwd() .. "/.env"
+    --       if vim.fn.isdirectory(venv) == 1 then
+    --         require("venv-selector").activate(venv)
+    --       end
+    --     end,
+    --   })
+    -- end,
+    keys = {
+      { "<leader>vs", "<cmd>VenvSelect<cr>", desc = "Select VirtualEnv" },
+    },
   },
 }
