@@ -2,8 +2,11 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+xrandr  --output HDMI-0 --auto --primary --output eDP-1-1 --auto --left-of HDMI-0
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9 
+bspc monitor eDP-1-1 -d 0
 
 bspc config window_gap           5
 bspc config border_radius        5
@@ -30,5 +33,3 @@ polybar &
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 feh --bg-fil --randomize ~/Pictures/wallpaper/random/*
 picom &
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-~/dev/Synthing/syncthing
