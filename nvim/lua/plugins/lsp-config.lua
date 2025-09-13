@@ -27,9 +27,9 @@ return {
       lspconfig.ts_ls.setup({
         capabilities = capabilities,
       })
-      lspconfig.eslint.setup({
-        capabilities = capabilities,
-      })
+      -- lspconfig.eslint.setup({
+      --   capabilities = capabilities,
+      -- })
       lspconfig.emmet_ls.setup({
         capabilities = capabilities,
       })
@@ -69,7 +69,7 @@ return {
   {
     "linux-cultist/venv-selector.nvim",
     opts = {
-      fd_binary_name = "fdfind",                -- fix for Ubuntu
+      fd_binary_name = "fdfind",                 -- fix for Ubuntu
       name = { ".venv", "venv", ".env", "env" }, -- include .env
       auto_refresh = true,
       search_workspace = true,
