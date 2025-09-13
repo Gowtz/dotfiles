@@ -45,12 +45,11 @@ alt + i
     polybar-msg cmd hide; bspc config top_padding 0 
 
 super + {1,2,3,4,5,6,7,8,9,0}
-    bspc desktop -f {1,2,3,4,5,6,7,8,9,0} 
+    bspc desktop -f {1,2,3,4,5,6,7,8,9, 0} 
 
 super + shift + {1,2,3,4,5,6,7,8,9,0}
     bspc node -d {1,2,3,4,5,6,7,8,9,0}
 
-#
 # state/flags
 #
 #M
@@ -149,7 +148,20 @@ XF86AudioMute
 super + {+,-}
   pulsemixer --change-volume {+,-}10  
 
+super + ctrl + w
+  feh --bg-fil --randomize ~/Pictures/wallpaper/random/White/*
 
+super + ctrl + b
+  feh --bg-fil --randomize ~/Pictures/wallpaper/random/Black/*
+
+super + ctrl + c
+  feh --bg-fil --randomize ~/Pictures/wallpaper/random/Color/*
+
+super + ctrl + a
+  feh --bg-fil --randomize ~/Pictures/wallpaper/random/Art/*
+
+super + ctrl + s
+  feh --bg-fil --randomize ~/Pictures/wallpaper/random/Scene/*
 
 # focus the node in the given direction
 alt + {_,shift + }Tab
