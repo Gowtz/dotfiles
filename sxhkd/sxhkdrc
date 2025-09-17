@@ -40,9 +40,9 @@ super + g
 
 
 super + i
-    polybar-msg cmd show; bspc config top_padding 25
+    polybar-msg cmd show; bspc config -m primary top_padding 40
 alt + i
-    polybar-msg cmd hide; bspc config top_padding 0 
+    polybar-msg cmd hide; bspc config -m primary top_padding 0 
 
 super + {1,2,3,4,5,6,7,8,9,0}
     bspc desktop -f {1,2,3,4,5,6,7,8,9, 0} 
