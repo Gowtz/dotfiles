@@ -44,6 +44,7 @@ alias f-conf "nvim ~/.config/fish/config.fish"
 alias pn "pnpm"
 alias vim "nvim"
 alias bat "batcat"
+alias disp " ddcutil setvcp 10 "
 # alias kubectl "minikube kubectl --"
 
 
@@ -55,6 +56,7 @@ alias gl "git log"
 alias goo "git log --oneline"
 alias ga "git add ."
 alias gcm "git commit -m"
+
 
 
 # use the 22 while starting
