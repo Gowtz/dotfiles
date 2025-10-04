@@ -1,16 +1,13 @@
 #!/bin/bash
 
-status=$(playerctl --player=rhythmbox status 2>/dev/null)
-title=$(playerctl --player=rhythmbox metadata --format "{{ title }}" 2>/dev/null)
-
-if [[ -z "$status" ]]; then
-    exit 0
-fi
-
-if [[ "$status" == "Playing" ]]; then
-    echo " %{F#FFD700}$title%{F-}"
-elif [[ "$status" == "Paused" ]]; then
-    echo " %{F#666666}$title%{F-}"
-fi
-
+playerctl --player=rhythmbox metadata --follow \
+    --format '{{status}}|{{title}}' | while IFS="|" read -r status title; do
+    if [[ "$status" == "Playing" ]]; then
+        echo " %{F#FFD700}$title%{F-}"
+    elif [[ "$status" == "Paused" ]]; then
+        echo " %{F#666666}$title%{F-}"
+    else
+        echo ""  # nothing if stopped
+    fi
+done
 
