@@ -45,6 +45,9 @@ alias pn "pnpm"
 alias vim "nvim"
 alias bat "batcat"
 alias disp " ddcutil setvcp 10 "
+alias btc "bluetoothctl connect"
+alias pc  "pactl set-default-sink"
+
 # alias kubectl "minikube kubectl --"
 
 
