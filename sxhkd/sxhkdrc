@@ -1,6 +1,5 @@
 #
 # wm independent hotkeys
-#
 
 # terminal emulator
 super + Return
@@ -8,11 +7,20 @@ super + Return
 
 # program launcher
 alt + @space
-	rofi -show drun
+    ~/.config/rofi/launchers/type-6/launcher.sh
+
+alt + Escape
+    ~/.config/rofi/powermenu/type-6/powermenu.sh
+
+# file manager
+alt + e
+  nautilus
+
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
 
 #
 # bspwm hotkeys
@@ -39,28 +47,38 @@ super + g
 	bspc node -s biggest.window
 
 
+# Polybar toggle
 super + i
-    polybar-msg cmd show; bspc config -m primary top_padding 40
+    polybar-msg cmd show; bspc config -m eDP-1-1 top_padding 30
 alt + i
-    polybar-msg cmd hide; bspc config -m primary top_padding 0 
+    polybar-msg cmd hide; bspc config -m eDP-1-1 top_padding 0 
 
+# second display
+super + b
+  bspc desktop -f second
+
+# move the focused node to the given desktop and follow it
 super + {1,2,3,4,5,6,7,8,9,0}
     bspc desktop -f {1,2,3,4,5,6,7,8,9, 0} 
 
-super + shift + {1,2,3,4,5,6,7,8,9,0}
-    bspc node -d {1,2,3,4,5,6,7,8,9,0}
+super + shift + {1,2,3,4,5,6,7,8,9,0,b}
+    bspc node -d {1,2,3,4,5,6,7,8,9,0,second}
 
-# state/flags
-#
-#M
-#super + l
     
 
 # set the window state
+# super + t is tiled window
+# super + shift + t is pseudo_tiled window
+# super + s is floating window
+# super + f is fullscreen window
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
+# super + ctrl + m is marked window
+# super + ctrl + x is locked window
+# super + ctrl + y is sticky window
+# super + ctrl + z is private window
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
@@ -77,6 +95,8 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
+# super + c is next window
+# super + shift + c is previous window
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
@@ -98,26 +118,26 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+# #
+# # preselect
+# #
 #
-# preselect
+# # preselect the direction
+# super + ctrl + {h,j,k,l}
+# 	bspc node -p {west,south,north,east}
 #
-
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
+# # preselect the ratio
+# super + ctrl + {1-9}
+# 	bspc node -o 0.{1-9}
+#
+# # cancel the preselection for the focused node
+# super + ctrl + space
+# 	bspc node -p cancel
+#
+# # cancel the preselection for the focused desktop
+# super + ctrl + shift + space
+# 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+#
 #
 # move/resize
 #
@@ -186,18 +206,18 @@ super + Print
 #     polybar-msg cmd hide`
 #
 
-# Volume
-XF86AudioMute
-    echo "Mute Pressed" >> /tmp/sxhkd-test.log
-
-XF86AudioRaiseVolume
-    amixer set Master 5%+
-
-XF86AudioLowerVolume
-    amixer set Master 5%-
-
-XF86Audio{Play,Prev,Next}
-	playerctl --player=vlc,spotify {play-pause,previous,next}
+# # Volume
+# XF86AudioMute
+#     echo "Mute Pressed" >> /tmp/sxhkd-test.log
+#
+# XF86AudioRaiseVolume
+#     amixer set Master 5%+
+#
+# XF86AudioLowerVolume
+#     amixer set Master 5%-
+#
+# XF86Audio{Play,Prev,Next}
+# 	playerctl --player=vlc,spotify {play-pause,previous,next}
 
 
 ctrl + alt + shift + {Down,Up}
